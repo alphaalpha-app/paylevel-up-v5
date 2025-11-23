@@ -77,8 +77,7 @@ export const PayslipVerifier: React.FC<PayslipVerifierProps> = ({ logs, settings
   const appTotalGross = appStats.estimatedBasePay + inputAllowance;
   const appNetPay = appTotalGross * (1 - inputTaxRate/100);
 
-  const slipTotalGross = (inputWeekday * activeJob.hourlyRate) + (inputWeekend * activeJob.weekendHourlyRate) + (inputOver5daysFirst2Hours * inputOver5daysFirst2HoursRate) + (inputOver5daysAfter2Hours * inputOver5daysAfter2HoursRate) + inputAllowance;  const slipNetPay = slipTotalGross * (1 - inputTaxRate/100);
-
+  const slipTotalGross = (inputWeekday * activeJob.hourlyRate) + (inputWeekend * activeJob.weekendHourlyRate) + (inputOver5daysFirst2Hours * inputOver5daysFirst2HoursRate) + (inputOver5daysAfter2Hours * inputOver5daysAfter2HoursRate) + inputAllowance;
   const diffWeekday = inputWeekday - appStats.weekdayHours;
   const diffWeekend = inputWeekend - appStats.weekendHours;
   const diffPay = slipTotalGross - appTotalGross;
@@ -157,7 +156,8 @@ export const PayslipVerifier: React.FC<PayslipVerifierProps> = ({ logs, settings
                                  <div className="flex justify-between items-center"><label className="text-xs">Over 5 days - First 2 Hours ($)</label><input type="number" value={slipOver5daysFirst2HoursRate} onChange={(e) => setSlipOver5daysFirst2HoursRate(e.target.value)} className="w-20 text-xs border rounded p-1 text-right"/></div>
                                  <div className="flex justify-between items-center"><label className="text-xs">Over 5 days - After 2 Hours (h)</label><input type="number" value={slipOver5daysAfter2Hours} onChange={(e) => setSlipOver5daysAfter2Hours(e.target.value)} className="w-20 text-xs border rounded p-1 text-right"/></div>
                                  <div className="flex justify-between items-center"><label className="text-xs">Over 5 days - After 2 Hours ($)</label><input type="number" value={slipOver5daysAfter2HoursRate} onChange={(e) => setSlipOver5daysAfter2HoursRate(e.target.value)} className="w-20 text-xs border rounded p-1 text-right"/></div>
-                    <div className="flex justify-between border-t pt-2 font-bold text-gray-800 text-sm"><span>Payslip Net</span><span>{settings.currency} {slipNetPay.toLocaleString()}</span></div>
+                                 <div className="flex justify-between items-center"><label className="text-xs">津貼 ($)</label><input type="number" value={slipAllowances} onChange={(e) => setSlipAllowances(e.target.value)} className="w-20 text-xs border rounded p-1 text-right"/></div> 
+                   <div className="flex justify-between border-t pt-2 font-bold text-gray-800 text-sm"><span>Payslip Net</span><span>{settings.currency} {slipNetPay.toLocaleString()}</span></div>
                  </div>
             </div>
         </div>
