@@ -8,6 +8,8 @@ export interface Job {
   targetHours: number;
   nextHourlyRate: number;    // Next Level Mon-Fri
   nextWeekendHourlyRate: number; // Next Level Sat-Sun & Pub Hol
+    over5daysFirst2HoursRate: number;  // Over 5 days - First 2 hours
+    over5daysAfter2HoursRate: number;  // Over 5 days - After 2 hours
 }
 
 export interface WorkLog {
