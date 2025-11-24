@@ -78,6 +78,7 @@ export const PayslipVerifier: React.FC<PayslipVerifierProps> = ({ logs, settings
   const appNetPay = appTotalGross * (1 - inputTaxRate/100);
 
   const slipTotalGross = (inputWeekday * activeJob.hourlyRate) + (inputWeekend * activeJob.weekendHourlyRate) + (inputOver5daysFirst2Hours * inputOver5daysFirst2HoursRate) + (inputOver5daysAfter2Hours * inputOver5daysAfter2HoursRate) + inputAllowance;
+    const slipNetPay = slipTotalGross * (1 - inputTaxRate/100);
   const diffWeekday = inputWeekday - appStats.weekdayHours;
   const diffWeekend = inputWeekend - appStats.weekendHours;
   const diffPay = slipTotalGross - appTotalGross;
